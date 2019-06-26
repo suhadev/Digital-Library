@@ -1,0 +1,28 @@
+
+<div class="container">
+  <hr>
+    <div class="row">
+        <div class="col-lg-6">
+            <a class="btn btn-primary" href="#" routerLink="add">Add book</a>
+        </div>
+        <div class="col-lg-6 text-right">
+        
+            <input type="text" placeholder="Search" ng-model = "searchText">
+            {{searchText}}
+        </div>
+        
+    </div>
+    <hr>
+    <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4" *ngFor = "let book of bookData">
+                    <div class="card border-0 shadow" [routerLink]="['/edit',book.id]">
+                      <img src= "https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+                      <div class="card-body text-center">
+                        <h5 class="card-title mb-0">{{book.title}}</h5>
+                        <div class="card-text text-black-50">{{book.description}}</div>
+                      </div>
+                    </div>
+                  </div>
+        
+    </div>
+</div>
