@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl} from '@angular/forms'
 import {HttpClient} from '@angular/common/http'
+import { Router, Route } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -9,7 +10,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class AddComponent implements OnInit {
 
-  constructor(public httpClient : HttpClient) { }
+  constructor(public httpClient : HttpClient, public router : Router) { }
   formValue
   bookForm = new FormGroup({
     title : new FormControl(),
@@ -38,6 +39,7 @@ export class AddComponent implements OnInit {
     .then(
       (res)=>{
         alert("book details successfully added")
+        this.router.navigate([''])
       },
     (err)=>{console.log(err)})
      

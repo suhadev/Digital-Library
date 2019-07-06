@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { FormGroup } from '@angular/forms';
+import { FormGroup,FormControl } from '@angular/forms';
 import {Router, ActivatedRoute,ParamMap} from '@angular/router'
 
 @Component({
@@ -9,20 +9,37 @@ import {Router, ActivatedRoute,ParamMap} from '@angular/router'
   styleUrls: ['./book-details.component.css']
 })
 export class BookDetailsComponent implements OnInit {
-
-  constructor(public httpClient : HttpClient) { }
-  bookForm = new FormGroup({
-
-  })
+  bookData
+  constructor(public httpClient : HttpClient, public route:ActivatedRoute) { }
+  bookForm;
   
   ngOnInit() {
-    // console.log(this.route.snapshot.ParamMap.get('id'))
-    this.httpClient.get(`https://5d109f54bebb9800143d191d.mockapi.io/books/${id}`)
-    .toPromise()
-    .then((res)=>{
-
-    },
-    (err)=>{})
+    this.bookForm = new FormGroup({
+      title : new FormControl(),
+      author : new FormControl(),
+      department : new FormControl,
+      imageURL: new FormControl(),
+      description: new FormControl(),
+      price: new FormControl()
+    })
+  
+    let id = this.route.snapshot.paramMap.get('id')
+   this.httpClient.get(`https://5d109f54bebb9800143d191d.mockapi.io/books/${id}`)
+   .toPromise()
+   .then((res)=>{
+     
+     this.bookData = res;
+     console.log(this.bookData)
+     this.bookForm.setValue(
+       {title: this.bookData.title,
+         author:this.bookData.author,
+         department:this.bookData.department,
+         description:this.bookData.description,
+         price:this.bookData.price,
+         imageURL:''
+        })
+   },(err)=>{
+     console.log(err)
+   })
   }
-
 }

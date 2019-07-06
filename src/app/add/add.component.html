@@ -1,6 +1,7 @@
 <hr>
-<form [formGroup]='bookForm' (ngSubmit)="addBookDetails()">
-    <div class="container">
+
+<div class="container-fluid text-center">
+    <form [formGroup]='bookForm' (submit)="addBookDetails()">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h3>Enter the Book details</h3>
@@ -10,14 +11,14 @@
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Title</label>
-                    <input type="text" name="" id="" formControlName='title'>
+                    <input type="text" name="" id="" formControlName='title' class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Author</label>
-                    <input type="text" name="" id="" formControlName='author'>
+                    <input type="text" name="" id="" formControlName='author' class="form-control">
                 </div>
             </div>
         </div>
@@ -25,14 +26,14 @@
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Department</label>
-                    <input type="text" name="" id="" formControlName='department'>
+                    <input type="text" name="" id="" formControlName='department' class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Cover Image URL</label>
-                    <input type="text" name="" id="" formControlName='imageURL'>
+                    <input type="text" name="" id="" formControlName='imageURL' class="form-control">
                 </div>
             </div>
         </div>
@@ -40,22 +41,23 @@
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Description</label>
-                    <input type="text" name="" id="" formControlName='description'>
+                    <input type="text" name="" id="" formControlName='description' class="form-control">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-lg-6">
                     <label>Price</label>
-                    <input type="text" name="" id="" formControlName='price'>
+                    <input type="text" name="" id="" formControlName='price' class="form-control">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6">
-                <input type="submit" placeholder="Add" class="btn btn-primary" routerLink="">
+                <input type="submit" placeholder="Add" class="btn btn-primary">
             </div>
         </div>
-    </div>
 
-</form>
+
+    </form>
+</div>

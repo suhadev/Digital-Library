@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 
 
 @Component({
@@ -9,21 +9,21 @@ import {HttpClient} from '@angular/common/http'
 })
 export class HomeComponent implements OnInit {
   bookData
-  
+
   searchResult = []
-  constructor(public httpClient : HttpClient) { }
-  
+  constructor(public httpClient: HttpClient) { }
+
   ngOnInit() {
     this.httpClient.get("https://5d109f54bebb9800143d191d.mockapi.io/books")
-    .toPromise()
-    .then((res)=>{
-      console.log(res)
-      this.bookData = res
-      
-    },
-    (err)=>{
-      console.log(err)
-    })
+      .toPromise()
+      .then((res) => {
+        console.log(res)
+        this.bookData = res
+
+      },
+        (err) => {
+          console.log(err)
+        })
   }
   // searchBooks(){
   //   this.bookData.map((book)=>{
