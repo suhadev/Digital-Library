@@ -10,8 +10,9 @@ import {Router, ActivatedRoute,ParamMap} from '@angular/router'
 })
 export class BookDetailsComponent implements OnInit {
   bookData
-  constructor(public httpClient : HttpClient, public route:ActivatedRoute) { }
+  constructor(public httpClient : HttpClient, public route:ActivatedRoute, public router:Router) { }
   bookForm;
+   id;
   
   ngOnInit() {
     this.bookForm = new FormGroup({
@@ -23,8 +24,8 @@ export class BookDetailsComponent implements OnInit {
       price: new FormControl()
     })
   
-    let id = this.route.snapshot.paramMap.get('id')
-   this.httpClient.get(`https://5d109f54bebb9800143d191d.mockapi.io/books/${id}`)
+    this.id = this.route.snapshot.paramMap.get('id')
+   this.httpClient.get(`https://5d109f54bebb9800143d191d.mockapi.io/books/${this.id}`)
    .toPromise()
    .then((res)=>{
      
@@ -41,5 +42,18 @@ export class BookDetailsComponent implements OnInit {
    },(err)=>{
      console.log(err)
    })
+   
+  }
+  deleteBook(){
+    console.log("d")
+    this.httpClient.delete(`https://5d109f54bebb9800143d191d.mockapi.io/books/${this.id}`)
+    .toPromise()
+    .then((res)=>{
+      alert("Book Deleted Successfully");
+      this.router.navigate([''])
+    },(err)=>{
+      console.log(err)
+    })
+    
   }
 }
