@@ -26,7 +26,7 @@ export class AddComponent implements OnInit {
   }
   addBookDetails(){
     this.formValue = this.bookForm.value
-    this.httpClient.post("https://5d109f54bebb9800143d191d.mockapi.io/books",{
+    this.httpClient.post("http://localhost:8000/add",{
       title : this.formValue.title,
       author: this.formValue.author,
       department:this.formValue.department,

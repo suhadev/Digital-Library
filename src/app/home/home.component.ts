@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(public httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get("https://5d109f54bebb9800143d191d.mockapi.io/books")
+    this.httpClient.get("http://localhost:8000/")
       .toPromise()
       .then((res) => {
         console.log(res)
